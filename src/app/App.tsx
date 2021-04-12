@@ -1,10 +1,14 @@
-import React from 'react';
+import React from "react";
+import { MainContainer } from "./components/MainContainer";
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <>
+      <header>
+        <h1>neomorph-tool</h1>
+      </header>
+      <MainContainer />
+    </>
   );
 }
 

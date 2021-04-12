@@ -1,13 +1,122 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
+* {
+  box-sizing: border-box;
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+}
+$header-font-size: 1rem;
+$header-padding: 0.5rem 0 0.5rem 0;
+
+body,
+html {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  font-family: "Open Sans", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 5em);
+  @media (min-width: 1000px) {
+    flex-direction: row;
+  }
+}
+
+header {
+  width: 100%;
+  height: 5em;
+  font-size: $header-font-size;
+  padding: $header-padding;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.14);
+  h1 {
+    margin: 0;
+    padding: 0 clamp(0em, 10vw, 2em);
+    text-align: center;
+    font-weight: 900;
+    color: #111;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.preview-container {
+  flex: 0 0 100%;
+  @media (min-width: 1000px) {
+    flex: 1 0 0;
+  }
+  width: 100%;
+  display: flex;
+  background: #fafafa;
+  align-items: center;
+  overflow: hidden;
+  justify-content: center;
+  .preview-elem {
+    width: 250px;
+    height: 250px;
+    background-color: #fff;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.06),
+      0 1px 10px 0 rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.control-container {
+  overflow: auto;
+  flex: 0 0 auto;
+  display: flex;
+  padding: 3em;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  background: #fafafa;
+  @media (min-width: 1000px) {
+    flex: 1 0 0;
+    justify-content: center;
+  }
+  .range-input {
+    background: #fff;
+    padding: 1em 2em;
+    border-radius: 1em;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.06),
+      0 1px 10px 0 rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.14);
+    display: flex;
+    width: unquote("min(100%, 50em)");
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    & > * {
+      display: flex;
+    }
+    & > * + * {
+      margin-left: auto;
+    }
+    input {
+      flex-grow: 1;
+      margin: 0 1em;
+    }
+  }
 }
