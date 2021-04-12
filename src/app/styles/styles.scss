@@ -31,7 +31,7 @@ main {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 90%;
+  height: calc(100% - 5em);
   @media (min-width: 1000px) {
     flex-direction: row;
   }
@@ -39,17 +39,25 @@ main {
 
 header {
   width: 100%;
-  height: 10%;
-  text-align: center;
+  height: 5em;
   font-size: $header-font-size;
   padding: $header-padding;
-  background-color: blue;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 999;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.06), 0 1px 10px 0 rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.14);
   h1 {
     margin: 0;
-    padding: 0;
+    padding: 0 clamp(0em, 10vw, 2em);
+    text-align: center;
+    font-weight: 900;
+    color: #111;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -60,15 +68,16 @@ header {
   }
   width: 100%;
   display: flex;
-  background: lightsalmon;
+  background: #fafafa;
   align-items: center;
   overflow: hidden;
   justify-content: center;
   .preview-elem {
     width: 250px;
     height: 250px;
-    background-color: aqua;
-    border-radius: 2em;
+    background-color: #fff;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.06),
+      0 1px 10px 0 rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.14);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,10 +85,38 @@ header {
 }
 
 .control-container {
-  flex: 0 0 100vh;
+  overflow: auto;
+  flex: 0 0 auto;
+  display: flex;
+  padding: 3em;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  background: #fafafa;
   @media (min-width: 1000px) {
     flex: 1 0 0;
+    justify-content: center;
   }
-  width: 100%;
-  background-color: lightgreen;
+  .range-input {
+    background: #fff;
+    padding: 1em 2em;
+    border-radius: 1em;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.06),
+      0 1px 10px 0 rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.14);
+    display: flex;
+    width: unquote("min(100%, 50em)");
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    & > * {
+      display: flex;
+    }
+    & > * + * {
+      margin-left: auto;
+    }
+    input {
+      flex-grow: 1;
+      margin: 0 1em;
+    }
+  }
 }
